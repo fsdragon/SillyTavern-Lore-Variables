@@ -159,7 +159,7 @@ export class LoreVarManager {
 
 	async updateWorld(name) {
 		const queue = [];
-		const result = await fetch("/getworldinfo", {
+		const result = await fetch("/api/worldinfo/get", {
 			method: "POST",
 			headers: getRequestHeaders(),
 			body: JSON.stringify({name}),
@@ -196,7 +196,7 @@ export class LoreVarManager {
 
 
 	async saveWorld(name) {
-		const result = await fetch("/getworldinfo", {
+		const result = await fetch("/api/worldinfo/get", {
 			method: "POST",
 			headers: getRequestHeaders(),
 			body: JSON.stringify({name}),
@@ -222,7 +222,7 @@ export class LoreVarManager {
 			if (hasUpdate) {
 				document.querySelector('#world_editor_select').selectedIndex = 0;
 				document.querySelector('#world_editor_select').dispatchEvent(new Event('change'));
-				const saveResult = await fetch("/editworldinfo", {
+				const saveResult = await fetch("/api/worldinfo/edit", {
 					method: "POST",
 					headers: getRequestHeaders(),
 					body: JSON.stringify({data, name}),
